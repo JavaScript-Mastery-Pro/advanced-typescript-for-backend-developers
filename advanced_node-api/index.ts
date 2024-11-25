@@ -6,10 +6,12 @@ import { InversifyExpressServer } from "inversify-express-utils";
 
 import { env } from "@/env";
 import TYPES from "@/constants/types";
-import { UserService } from "@/services/user";
 import { LogService } from "@/services/log";
+import { UserService } from "@/services/user";
+import { EventService } from "@/services/event";
 
 import "@/controllers/user.controller";
+import "@/controllers/event.controller";
 
 import { LoggingMiddleware } from "@/middlewares/logger";
 
@@ -19,6 +21,7 @@ let container = new Container();
 
 container.bind<LogService>(TYPES.LogService).to(LogService);
 container.bind<UserService>(TYPES.UserService).to(UserService);
+container.bind<EventService>(TYPES.EventService).to(EventService);
 container
   .bind<LoggingMiddleware>(TYPES.LoggingMiddleware)
   .to(LoggingMiddleware); // Bind the middleware to DI
