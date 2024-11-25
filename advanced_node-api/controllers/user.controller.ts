@@ -13,7 +13,7 @@ import { Request, Response } from "express";
 import TYPES from "@/constants/types";
 import { UserService } from "@/services/user";
 
-@controller("/api/user")
+@controller("/api/users")
 export class UserController {
   constructor(@inject(TYPES.UserService) private userService: UserService) {}
 
