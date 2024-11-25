@@ -2,13 +2,15 @@ import mongoose from "mongoose";
 import express from "express";
 import dotenv from "dotenv";
 
+import { env } from "@/env";
+
 dotenv.config();
 
 const app = express();
-const port = 2000;
+const port = env.PORT;
 
 mongoose
-  .connect(process.env.DATABASE_URL, {
+  .connect(env.DATABASE_URL, {
     dbName: "advanced_node",
   })
   .then(() => console.log("🍀 Connected to MongoDB"))
@@ -16,6 +18,4 @@ mongoose
 
 app.listen(port);
 
-console.log(
-  `🚀 Server is running in ${process.env.NODE_ENV} mode on port ${port}`
-);
+console.log(`🚀 Server is running in ${env.NODE_ENV} mode on port ${port}`);
