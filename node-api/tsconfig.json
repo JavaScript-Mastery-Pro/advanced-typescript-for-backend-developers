@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        },
+        "module": "commonjs",
+        "target": "es5",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "esModuleInterop": true
+    },
+    "compileOnSave": false,
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "./**/*.ts",
+        "tests/**/*.ts",
+    ]
+}
