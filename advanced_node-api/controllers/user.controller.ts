@@ -11,17 +11,23 @@ import { inject } from "inversify";
 import { Request, Response } from "express";
 
 import TYPES from "@/constants/types";
+import { LogService } from "@/services/log";
 import { UserService } from "@/services/user";
 
 @controller("/api/users")
 export class UserController {
-  constructor(@inject(TYPES.UserService) private userService: UserService) {}
+  constructor(
+    @inject(TYPES.UserService) private userService: UserService,
+    @inject(TYPES.LogService) private logService: LogService
+  ) {}
 
   @httpGet("/")
   public async getUsers(
     @request() req: Request,
     @response() res: Response
   ): Promise<Response> {
+    this.logService.logInfo(`[GET] ${req.originalUrl} - Fetching users`);
+
     const users = await this.userService.getUsers();
     if (users.length === 0) {
       return res.status(404).json({ message: "No users found" });

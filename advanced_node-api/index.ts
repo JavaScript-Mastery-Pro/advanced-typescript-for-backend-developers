@@ -7,6 +7,7 @@ import { InversifyExpressServer } from "inversify-express-utils";
 import { env } from "@/env";
 import TYPES from "@/constants/types";
 import { UserService } from "@/services/user";
+import { LogService } from "@/services/log";
 
 import "@/controllers/user.controller";
 
@@ -14,6 +15,7 @@ const port = env.PORT;
 
 let container = new Container();
 
+container.bind<LogService>(TYPES.LogService).to(LogService);
 container.bind<UserService>(TYPES.UserService).to(UserService);
 
 let server = new InversifyExpressServer(container);
