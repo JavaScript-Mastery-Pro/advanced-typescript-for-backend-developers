@@ -1,13 +1,32 @@
+import "reflect-metadata";
 import mongoose from "mongoose";
-import express from "express";
-import dotenv from "dotenv";
+import * as express from "express";
+import { Container } from "inversify";
+import { InversifyExpressServer } from "inversify-express-utils";
 
 import { env } from "@/env";
+import TYPES from "@/constants/types";
+import { UserService } from "@/services/user";
 
-dotenv.config();
+import "@/controllers/user.controller";
 
-const app = express();
 const port = env.PORT;
+
+let container = new Container();
+
+container.bind<UserService>(TYPES.UserService).to(UserService);
+
+let server = new InversifyExpressServer(container);
+server.setConfig((app) => {
+  app.use(
+    express.urlencoded({
+      extended: true,
+    })
+  );
+  app.use(express.json());
+});
+
+let app = server.build();
 
 mongoose
   .connect(env.DATABASE_URL, {
