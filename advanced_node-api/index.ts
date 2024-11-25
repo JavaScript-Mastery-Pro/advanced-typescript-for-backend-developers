@@ -11,12 +11,17 @@ import { LogService } from "@/services/log";
 
 import "@/controllers/user.controller";
 
+import { LoggingMiddleware } from "@/middlewares/logger";
+
 const port = env.PORT;
 
 let container = new Container();
 
 container.bind<LogService>(TYPES.LogService).to(LogService);
 container.bind<UserService>(TYPES.UserService).to(UserService);
+container
+  .bind<LoggingMiddleware>(TYPES.LoggingMiddleware)
+  .to(LoggingMiddleware); // Bind the middleware to DI
 
 let server = new InversifyExpressServer(container);
 server.setConfig((app) => {
@@ -26,6 +31,11 @@ server.setConfig((app) => {
     })
   );
   app.use(express.json());
+
+  const loggingMiddleware = container.get<LoggingMiddleware>(
+    TYPES.LoggingMiddleware
+  );
+  app.use(loggingMiddleware.logRequest.bind(loggingMiddleware));
 });
 
 let app = server.build();
