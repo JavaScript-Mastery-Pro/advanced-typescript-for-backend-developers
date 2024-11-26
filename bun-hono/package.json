@@ -1,0 +1,28 @@
+{
+  "name": "bun-hono",
+  "scripts": {
+    "dev": "bun run --hot index.ts",
+    "db:generate": "drizzle-kit generate --config config/drizzle.ts",
+    "db:push": "drizzle-kit push --config config/drizzle.ts",
+    "db:migrate": "tsx config/migrate.ts",
+    "db:studio": "drizzle-kit studio --config config/drizzle.ts",
+    "db:seed": "bun run db/seed.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@hono/zod-openapi": "^0.18.0",
+    "@neondatabase/serverless": "^0.10.4",
+    "@types/jest": "^29.5.14",
+    "drizzle-orm": "^0.36.4",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^4.6.12",
+    "jest": "^29.7.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "drizzle-kit": "^0.28.1",
+    "postgres": "^3.4.5",
+    "tsx": "^4.19.2"
+  }
+}

@@ -1,0 +1,69 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Example GET /api/v1/events 1`] = `
+{
+  "data": [
+    {
+      "date": "2024-12-01",
+      "description": "A discussion about the future of AI and its impact on society.",
+      "event_type": "talk",
+      "id": 6,
+      "title": "Tech Talk: AI in 2024",
+      "userId": 3,
+    },
+    {
+      "date": "2024-12-05",
+      "description": "Hands-on coding session for developers new to JavaScript.",
+      "event_type": "workshop",
+      "id": 7,
+      "title": "JavaScript Workshop",
+      "userId": 2,
+    },
+    {
+      "date": "2024-12-10",
+      "description": "A beginner's guide to building web apps with React.",
+      "event_type": "workshop",
+      "id": 8,
+      "title": "React 101",
+      "userId": 1,
+    },
+  ],
+  "message": "Events fetched successfully",
+  "statusCode": 200,
+  "success": true,
+}
+`;
+
+exports[`Event GET /api/v1/events 1`] = `
+{
+  "data": [
+    {
+      "date": "2024-12-01",
+      "description": "A discussion about the future of AI and its impact on society.",
+      "event_type": "talk",
+      "id": 6,
+      "title": "Tech Talk: AI in 2024",
+      "userId": 3,
+    },
+    {
+      "date": "2024-12-05",
+      "description": "Hands-on coding session for developers new to JavaScript.",
+      "event_type": "workshop",
+      "id": 7,
+      "title": "JavaScript Workshop",
+      "userId": 2,
+    },
+    {
+      "date": "2024-12-10",
+      "description": "A beginner's guide to building web apps with React.",
+      "event_type": "workshop",
+      "id": 8,
+      "title": "React 101",
+      "userId": 1,
+    },
+  ],
+  "message": "Events fetched successfully",
+  "statusCode": 200,
+  "success": true,
+}
+`;
